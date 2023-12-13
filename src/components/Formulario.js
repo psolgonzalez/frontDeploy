@@ -19,7 +19,7 @@ function Formulario() {
     console.log(`dni ${dni}`);
 
     try {
-      const enviarDatos = await axios.post('http://localhost:9000/users/crear',{
+      const enviarDatos = await axios.post('backdeploy-production.up.railway.app/users/crear',{
         nombre,
         apellido,
         dni

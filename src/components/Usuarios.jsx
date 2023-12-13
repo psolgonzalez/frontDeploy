@@ -7,7 +7,7 @@ import Button from 'react-bootstrap/Button';
 const Usuarios = ()=>{
     const [ personas, setPersonas] = useState([]);
 
-    const URL = 'http://localhost:9000/users'
+    const URL = 'backdeploy-production.up.railway.app/users'
 
     const getPersona =async ()=>{
         const {data} =await axios.get(URL)
