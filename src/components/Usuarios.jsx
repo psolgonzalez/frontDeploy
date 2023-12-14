@@ -1,24 +1,42 @@
 import Table from 'react-bootstrap/Table';
-import { useState } from 'react';
-import axios from 'axios'
 import Button from 'react-bootstrap/Button';
+import { useState, useEffect } from 'react';
+import axios from 'axios';
 
 
 const Usuarios = ()=>{
     const [ personas, setPersonas] = useState([]);
 
-    const URL = 'backdeploy-production.up.railway.app/users'
+    const URL = 'https://backdeploy-production.up.railway.app/users';
 
-    const getPersona =async ()=>{
-        const {data} =await axios.get(URL)
-        console.log(data);
-    }
+
+   const getPersona = async () => {
+  try {
+    const { data } = await axios.get(URL);
+    setPersonas(data.personas);
+  } catch (error) {
+    console.error('Error al cargar personas:', error);
+    
+  }
+}
+
+ /*    const deleteUser = (id) =>{
+      alert(`Eliminará un usuario del registro ${id}`) 
+    }*/
+  
+    useEffect(() => {
+      getPersona()
+    }, []) 
+
+
+
 
     return (
         <> 
         <h1 className='text-center'>
             Lista de Usuarios
         </h1>
+        <div className='container'>  
     <Table className='container' striped bordered hover variant="dark">
       <thead>
         <tr>
@@ -29,16 +47,18 @@ const Usuarios = ()=>{
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <td>1</td>
-          <td>Mark</td>
-          <td>Otto</td>
-          <td>@mdo</td>
-        </tr>
-        
+        {personas.map(persona => 
+          <tr key={persona._id}>
+            <td>{persona._id}</td>
+            <td>{persona.nombre}</td>
+            <td>{persona.apellido}</td>
+            <td>{persona.dni}</td>
+          </tr>
+        )}
       </tbody>
-      <Button onClick={getPersona} variant="dark">Cargar</Button>
     </Table>
+      <Button onClick={getPersona} variant="dark">Cargar</Button>
+      </div>
         </>
     )
 }
