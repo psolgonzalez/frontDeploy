@@ -20,9 +20,10 @@ const Usuarios = ()=>{
   }
 }
 
- /*    const deleteUser = (id) =>{
-      alert(`Eliminará un usuario del registro ${id}`) 
-    }*/
+    const deleteUser = (id) =>{
+      alert(`Eliminar usuario ${id}`) 
+      
+    }
   
     useEffect(() => {
       getPersona()
@@ -53,10 +54,12 @@ const Usuarios = ()=>{
             <td>{persona.nombre}</td>
             <td>{persona.apellido}</td>
             <td>{persona.dni}</td>
+            <td><Button onClick={()=>deleteUser(persona._id)} variant="danger">Borrar</Button></td>
+            <td><Button variant="success">Actualizar</Button></td>
           </tr>
         )}
       </tbody>
-    </Table>
+      </Table>
       <Button onClick={getPersona} variant="dark">Cargar</Button>
       </div>
         </>
