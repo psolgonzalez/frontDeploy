@@ -5,7 +5,7 @@ import { Routes, Route } from 'react-router-dom'
 import Home from './components/Home';
 import Error from './components/Error';
 import Usuarios from './components/Usuarios';
-//import Buscar from './componentes/Buscar';
+import Buscar from './components/Buscar';
 
 function App() {
   return (
@@ -14,7 +14,8 @@ function App() {
     <Routes>
       <Route path='/' element={<Home/>}/>
       <Route path='/formulario' element={<Formulario/>}/>
-      <Route path='/Usuarios' element={<Usuarios/>}/>    
+      <Route path='/Usuarios' element={<Usuarios/>}/>  
+      <Route path='/buscar' element={<  Buscar />} />    
       <Route path='*' element={<Error/>}/>
     </Routes>
     

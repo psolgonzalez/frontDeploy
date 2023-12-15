@@ -11,7 +11,8 @@ function Navegacion() {
           <Nav className="ml-auto">
             <Nav.Link href="#home"></Nav.Link>
             <Nav.Link href="/formulario">Registro</Nav.Link>
-            <Nav.Link href="/usuarios">usuarios</Nav.Link>
+            <Nav.Link href="/usuarios">Usuarios</Nav.Link>
+            <Nav.Link href="/buscar">Buscar Nombre</Nav.Link>
           </Nav>
         </Container>
       </Navbar>
