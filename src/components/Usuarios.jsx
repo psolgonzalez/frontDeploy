@@ -10,15 +10,15 @@ const Usuarios = ()=>{
     const URL = 'https://backdeploy-production.up.railway.app/users';
 
 
-   const getPersona = async () =>{
-  try {
-    const { data } = await axios.get(URL);
-    setPersonas(data.personas);
-  } catch (error) {
-    console.error('Error al cargar personas:', error);
-    
-  }
-}
+    const getPersona = async () => {
+      try {
+        const { data } = await axios.get(URL);
+        setPersonas(data.personas);
+        console.log('Personas actualizadas:', data.personas);
+      } catch (error) {
+        console.error('Error al cargar personas:', error);
+      }
+    };
 
     const deleteUser = async (id) =>{
       alert(`Eliminar usuario ${id}`) 

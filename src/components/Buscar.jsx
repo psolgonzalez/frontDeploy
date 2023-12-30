@@ -4,22 +4,26 @@ import axios from 'axios';
 const Buscar = () => {
     const [personas, setPersonas] = useState([]);
     const [query, setQuery] = useState('');
-
-    const URL = 'https://backdeploy-production.up.railway.app/users/buscar'
+    const URL = 'https://backdeploy-production.up.railway.app/users/buscar';
 
     useEffect(() => {
-
         const getPersona = async () => {
             try {
                 const { data } = await axios.get(`${URL}?nombre=${query}`);
-                setPersonas(data.personas);
-                console.log(data);           
+                
+                if (data && data.personas) {
+                    setPersonas(data.personas);
+                    console.log(data);
+                } else {
+                    console.error('Respuesta inesperada:', data);
+                }
             } catch (error) {
-                console.error('Error en el get', error);
+                console.error('Error en la búsqueda:', error);
             }
-        }
-        getPersona()
-    }, [query])
+        };
+
+        getPersona();
+    }, [query]);
 
     return (
         <>
@@ -27,27 +31,37 @@ const Buscar = () => {
                 Buscar Personas
             </h1>
             <div className="container mt-5 text-center">
-                  <input 
+                <input 
                     type='text'
                     value={query}
                     placeholder='Buscar por Nombre'
                     onChange={(e) => setQuery(e.target.value)}
-                  />
+                />
             </div>
             <div className="container mt-5 text-center">
-                    {personas.map(persona =>
-                        <tr key={persona._id}>
-                          <td>{persona.nombre}</td>
-                          <td>{persona.apellido}</td>
-                        </tr>
-                    )}
+                {personas && personas.length > 0 ? (
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Nombre</th>
+                                <th>Apellido</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {personas.map(persona =>
+                                <tr key={persona._id}>
+                                    <td>{persona.nombre}</td>
+                                    <td>{persona.apellido}</td>
+                                </tr>
+                            )}
+                        </tbody>
+                    </table>
+                ) : (
+                    <p>No se encontraron personas.</p>
+                )}
             </div>
         </>
-    )
+    );
 }
 
 export default Buscar;
-
-/*ERROR QUEME SALE EN CONSOLA EN BUSCAR POR NOMBRE Y EN USUARIOS 
-
-Access to XMLHttpRequest at 'https://backdeploy-production.up.railway.app/users/buscar?nombre=' from origin 'http://localhost:3000' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource. */

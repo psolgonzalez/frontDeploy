@@ -15,11 +15,11 @@ const Actualiza = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const updateUser = await axios.put(`${URL}/${id}, {
+            const updateUser = await axios.put(`${URL}/${id}`, {
                 nombre: nombre,
                 apellido: apellido,
                 dni: dni
-            }`)
+            })
             console.log('Respuesta: ', updateUser.data);
             navigate('/usuarios')
 
