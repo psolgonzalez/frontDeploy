@@ -9,7 +9,7 @@ const Actualiza = () => {
     const [apellido, setApellido] = useState('');
     const [dni, setDni] = useState('');
     const { id } = useParams()
-    const URL = 'https://backdeploy-production.up.railway.app/users/crear'
+    const URL =  'https://backdeploy-production.up.railway.app/users'
     const navigate= useNavigate()
 
     const handleSubmit = async (e) => {
@@ -55,7 +55,6 @@ const Actualiza = () => {
             console.error(`Error al obtener la persona: ${error.message}`);
         }
     }
-
 
     return (
         <>

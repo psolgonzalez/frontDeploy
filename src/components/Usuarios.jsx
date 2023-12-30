@@ -64,8 +64,8 @@ const Usuarios = ()=>{
               <td>{persona.nombre}</td>
               <td>{persona.apellido}</td>
               <td>{persona.dni}</td>
-              <td><Button onClick={()=>deleteUser(persona._id)} variant="danger">Delete</Button> 
-              <a href={`/update/${persona._id}`} className='btn btn-warning'>Actualiza</a></td>
+              <td><Button onClick={()=>deleteUser(persona._id)} variant="danger">Delete</Button></td>
+              <td><a href={`/update/${persona._id}`} className='btn btn-warning'>Actualiza</a></td>
              </tr>
           )}
         </tbody>
