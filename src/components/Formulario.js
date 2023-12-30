@@ -4,6 +4,7 @@ import { useState } from "react";
 import axios from 'axios'
 import Button from 'react-bootstrap/Button';
 
+
 function Formulario() {
 
   const [ nombre, setNombre ] = useState('');
@@ -74,8 +75,8 @@ function Formulario() {
         </Form>
         <Imagen />
 
-
       </div>
+
     </>
   );
 }

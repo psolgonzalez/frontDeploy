@@ -10,7 +10,7 @@ const Usuarios = ()=>{
     const URL = 'https://backdeploy-production.up.railway.app/users';
 
 
-   const getPersona = async () => {
+   const getPersona = async () =>{
   try {
     const { data } = await axios.get(URL);
     setPersonas(data.personas);
@@ -20,22 +20,30 @@ const Usuarios = ()=>{
   }
 }
 
-    const deleteUser = (id) =>{
+    const deleteUser = async (id) =>{
       alert(`Eliminar usuario ${id}`) 
-      
+      try {
+        const dataDelete = await axios.delete(`${URL}/${id}`);
+        if (dataDelete.status===200){
+          alert(`Persona con ID ${id}eliminado exitosamente`)
+          getPersona()
+        }else{ 
+          console.log('Error al eliminar tu persona:');
+      }
+    }catch (error){
+      console.log(error);
+      console.log('error al eliminar tu persona');
     }
+  }
   
     useEffect(() => {
       getPersona()
     }, []) 
 
-
-
-
     return (
         <> 
         <h1 className='text-center'>
-            Lista de Usuarios
+            Lista de tus Personas Favoritas
         </h1>
         <div className='container'>  
     <Table className='container' striped bordered hover variant="dark">
@@ -45,20 +53,22 @@ const Usuarios = ()=>{
           <th>Nombre</th>
           <th>Apellido</th>
           <th>DNI</th>
+          <th>Borrar</th>
+          <th>Actualizar</th>
         </tr>
       </thead>
       <tbody>
-        {personas.map(persona => 
-          <tr key={persona._id}>
-            <td>{persona._id}</td>
-            <td>{persona.nombre}</td>
-            <td>{persona.apellido}</td>
-            <td>{persona.dni}</td>
-            <td><Button onClick={()=>deleteUser(persona._id)} variant="danger">Borrar</Button></td>
-            <td><Button variant="success">Actualizar</Button></td>
-          </tr>
-        )}
-      </tbody>
+          {personas.map(persona =>
+            <tr key={persona._id}>
+              <td>{persona._id}</td>
+              <td>{persona.nombre}</td>
+              <td>{persona.apellido}</td>
+              <td>{persona.dni}</td>
+              <td><Button onClick={()=>deleteUser(persona._id)} variant="danger">Delete</Button> 
+              <a href={`/update/${persona._id}`} className='btn btn-warning'>Actualiza</a></td>
+             </tr>
+          )}
+        </tbody>
       </Table>
       <Button onClick={getPersona} variant="dark">Cargar</Button>
       </div>
