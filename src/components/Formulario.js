@@ -4,7 +4,6 @@ import { useState } from "react";
 import axios from 'axios'
 import Button from 'react-bootstrap/Button';
 
-
 function Formulario() {
 
   const [ nombre, setNombre ] = useState('');
@@ -34,7 +33,6 @@ function Formulario() {
       console.log(`Hay un error en ${error}`);
     }
   }
-
 
   return (
     <>
@@ -71,12 +69,9 @@ function Formulario() {
             <div> 
             <Button type="submit" variant="light">Enviar</Button>
             </div>  
-            
         </Form>
         <Imagen />
-
       </div>
-
     </>
   );
 }

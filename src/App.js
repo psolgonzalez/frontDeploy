@@ -7,6 +7,8 @@ import Error from './components/Error';
 import Usuarios from './components/Usuarios';
 import Buscar from './components/Buscar';
 import Actualiza from './components/Actualiza';
+import React from 'react';
+import Footer from './components/Footer'
 
 
 function App() {
@@ -22,7 +24,7 @@ function App() {
       <Route path='/update/:id' element={ <Actualiza />} />
       <Route path='*' element={ <Error />} />
     </Routes>
-    
+    <Footer/>
     </>
     );
 }
