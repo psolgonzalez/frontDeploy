@@ -1,4 +1,4 @@
-# proyectoUTN App Love!!
+# Proyecto UTN App Love!!
 
 ## Diplomatura en Programación Web Full Stack Developer - UTN
 
