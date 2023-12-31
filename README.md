@@ -1,4 +1,6 @@
-Diplomatura en Programación Web Full Stack Developer - UTN
+# proyectoUTN Supermercado Koto
+
+## Diplomatura en Programación Web Full Stack Developer - UTN
 
 ✔️Este es mi proyecto que hice para finalizar mi cursada en UTN.
 
